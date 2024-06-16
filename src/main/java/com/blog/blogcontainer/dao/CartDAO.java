@@ -15,7 +15,7 @@ public class CartDAO {
             Class.forName("oracle.jdbc.driver.OracleDriver");
 
             //step2 create  the connection object
-            con= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/XEPDB1","SYSTEM","test");
+            con= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/XEPDB1","SYSTEM","root123");
 
             //step3 create the statement object
 
@@ -38,7 +38,8 @@ public class CartDAO {
             System.out.println("see resultSet: "+ rs);
             while (rs.next()) {
                 System.out.println("See ammount: "+rs.getInt(4));
-                carts.add( new Cart(rs.getInt(1), rs.getString(2),rs.getInt(3), rs.getInt(4)));
+                System.out.println(rs);
+                carts.add( new Cart(rs.getInt(1), rs.getString(2),rs.getString(3), rs.getInt(4)));
 
             }
 

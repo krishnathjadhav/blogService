@@ -12,7 +12,7 @@ public class Cart {
         this.user = user;
     }
 
-    public void setProduct(int product) {
+    public void setProduct(String product) {
         this.product = product;
     }
 
@@ -30,7 +30,7 @@ public class Cart {
         return user;
     }
 
-    public int getProduct() {
+    public String getProduct() {
         return product;
     }
 
@@ -39,9 +39,9 @@ public class Cart {
     }
 
     private String user;
-    private int product;
+    private String product;
     private int ammount;
-    public Cart(int id, String user, int product, int ammount) {
+    public Cart(int id, String user, String product, int ammount) {
         this.id = id;
         this.user = user;
         this.product = product;
