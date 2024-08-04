@@ -23,10 +23,10 @@ import java.util.List;
 @RestController
 public class LoginInfoService {
 	@CrossOrigin(origins = "http://localhost:3000")
-	@PostMapping("/Login")
+	//@PostMapping("/Login")
 	public Object postLogin(@RequestBody LoginInfo loginInfo) {
 		
-		return new LoginInfoDAO().postLogin(loginInfo);
+		return null;
 	}
 }
 

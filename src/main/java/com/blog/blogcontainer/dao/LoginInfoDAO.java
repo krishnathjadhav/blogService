@@ -1,5 +1,7 @@
 package com.blog.blogcontainer.dao;
 
+import com.blog.model.request.LoginReq;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -15,7 +17,7 @@ public class LoginInfoDAO {
         try{
             Class.forName("oracle.jdbc.driver.OracleDriver");
 
-            con= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/XEPDB1","SYSTEM","root123");
+            con= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/XEPDB1","SYSTEM","test");
         }catch(Exception e){
             System.out.println(e);
         }
@@ -37,14 +39,14 @@ public class LoginInfoDAO {
 
   
     
-    public Object postLogin(LoginInfo loginInfo) {
+    public Object postLogin(LoginReq loginInfo) {
         String role = null;
         int userId = -1;
-        String username = loginInfo.getUsername();
+        String username = loginInfo.getName();
         String password = loginInfo.getPassword();
 
         try {
-            PreparedStatement pstmtSelectUser = con.prepareStatement("SELECT * FROM Users WHERE name = ? AND password = ?");
+            PreparedStatement pstmtSelectUser = con.prepareStatement("SELECT * FROM Register WHERE name = ? AND password = ?");
             pstmtSelectUser.setString(1, username);
             pstmtSelectUser.setString(2, password);
             ResultSet rsUser = pstmtSelectUser.executeQuery();
@@ -61,7 +63,7 @@ public class LoginInfoDAO {
                 } 
             } else {
                 System.out.println("User not found");
-                int id = generateUniqueId(); 
+                /**int id = generateUniqueId();
                 userId=id;
                 PreparedStatement pstmtInsertUser = con.prepareStatement("INSERT INTO Users (id, name, password) VALUES (?, ?, ?)");
                 pstmtInsertUser.setInt(1, id);
@@ -80,7 +82,8 @@ public class LoginInfoDAO {
                     } 
                 } else {
                     System.out.println("Failed to insert new user");
-                }
+                }**/
+                return null;
             }
         } catch (Exception e) {
             System.out.println("Error inserting/retrieving user: " + e.getMessage());

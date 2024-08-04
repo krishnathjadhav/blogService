@@ -15,7 +15,7 @@ public class RegisterDAO{
         try{
             Class.forName("oracle.jdbc.driver.OracleDriver");
 
-            con= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/XEPDB1","SYSTEM","root123");
+            con= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/XEPDB1","SYSTEM","test");
         }catch(Exception e){
             System.out.println(e);
         }
@@ -28,6 +28,7 @@ public class RegisterDAO{
     }
     
     public boolean postRegister(Register res) {
+        System.out.println("con: "+con);
     	boolean success=false;
     	String name=res.getName();
     	int mobile=res.getMobile();
@@ -39,7 +40,7 @@ public class RegisterDAO{
              PreparedStatement pstmt = con.prepareStatement("INSERT INTO Register (id,name,mobile,email,role,password ) VALUES (?, ?, ?, ?, ?, ?)");
              pstmt.setInt(1, id);
              pstmt.setString(2, name);
-             pstmt.setInt(3, mobile);
+             pstmt.setLong(3, mobile);
              pstmt.setString(4, email);
              pstmt.setString(5, role);
              pstmt.setString(6, password);

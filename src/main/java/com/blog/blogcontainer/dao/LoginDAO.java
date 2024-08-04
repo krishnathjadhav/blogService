@@ -14,7 +14,7 @@ public class LoginDAO{
     static {
         try{
             Class.forName("oracle.jdbc.driver.OracleDriver");
-            con= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/XEPDB1","SYSTEM","root123");
+            con= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/XEPDB1","SYSTEM","test");
         }catch(Exception e){
             System.out.println(e);
         }
