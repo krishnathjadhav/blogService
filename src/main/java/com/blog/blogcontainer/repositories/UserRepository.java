@@ -1,6 +1,7 @@
 package com.blog.blogcontainer.repositories;
 
 
+import com.blog.blogcontainer.dao.DBUtil;
 import com.blog.blogcontainer.dao.Products;
 import com.blog.model.User;
 import org.springframework.stereotype.Repository;
@@ -9,18 +10,9 @@ import java.sql.*;
 
 @Repository
 public class UserRepository {
-    static Connection con;
-    static {
-        try{
-            Class.forName("oracle.jdbc.driver.OracleDriver");
 
-            con= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/XEPDB1","SYSTEM","test");
-        }catch(Exception e){
-            System.out.println(e);
-        }
-
-    }
     public User findUserByName(String name){
+        Connection con = DBUtil.getConnection();
         User user = null; ;
         try {
             PreparedStatement stmt = con.prepareStatement("SELECT password, role FROM register where name= ?");

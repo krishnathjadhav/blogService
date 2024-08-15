@@ -8,28 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CartDAO {
-    static Connection con;
-    static {
-        try{
-            //step1 load the driver class
-            Class.forName("oracle.jdbc.driver.OracleDriver");
 
-            //step2 create  the connection object
-            con= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/XEPDB1","SYSTEM","root123");
-
-            //step3 create the statement object
-
-
-            //step5 close the connection object
-            //con.close();
-
-        }catch(Exception e){
-            System.out.println(e);
-        }
-
-    }
     public  List<Cart> getCarts() {
         List<Cart> carts = new ArrayList<>();
+        Connection con = DBUtil.getConnection();
         try {
             Statement stmt = con.createStatement();
 

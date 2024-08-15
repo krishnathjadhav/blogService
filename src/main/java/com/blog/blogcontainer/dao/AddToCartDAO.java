@@ -8,16 +8,7 @@ import java.sql.Statement;
 import java.util.UUID;
 
 public class AddToCartDAO {
-    static Connection con;
-    static {
-        try{
-            Class.forName("oracle.jdbc.driver.OracleDriver");
 
-            con= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/XEPDB1","SYSTEM","root123");
-        }catch(Exception e){
-            System.out.println(e);
-        }
-    }
     
     private static int idCounter = 1;
     public int generateUniqueId() {
@@ -33,7 +24,7 @@ public class AddToCartDAO {
     	String products=add.getProducts();
      int noOfItems=add.getNoOfItems();
      int billing_amount=add.getBilling_amount();
-    	
+        Connection con = DBUtil.getConnection();
      try {
     	  PreparedStatement pstmtSelectUser = con.prepareStatement("SELECT * FROM Users WHERE id = ?");
           pstmtSelectUser.setInt(1, user_id);

@@ -12,17 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class LoginInfoDAO {
-    static Connection con;
-    static {
-        try{
-            Class.forName("oracle.jdbc.driver.OracleDriver");
 
-            con= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/XEPDB1","SYSTEM","test");
-        }catch(Exception e){
-            System.out.println(e);
-        }
-
-    }
     
 //    public boolean postLogin(LoginInfo loginInfo) {
 //    	boolean s=true;
@@ -44,7 +34,7 @@ public class LoginInfoDAO {
         int userId = -1;
         String username = loginInfo.getName();
         String password = loginInfo.getPassword();
-
+        Connection con = DBUtil.getConnection();
         try {
             PreparedStatement pstmtSelectUser = con.prepareStatement("SELECT * FROM Register WHERE name = ? AND password = ?");
             pstmtSelectUser.setString(1, username);

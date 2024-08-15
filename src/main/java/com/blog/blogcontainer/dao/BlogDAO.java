@@ -6,27 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BlogDAO {
-    static Connection con;
-    static {
-        try{
-            //step1 load the driver class
-            Class.forName("oracle.jdbc.driver.OracleDriver");
 
-            //step2 create  the connection object
-            con= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/XEPDB1","SYSTEM","test");
-
-            //step3 create the statement object
-
-
-            //step5 close the connection object
-             //con.close();
-
-            }catch(Exception e){
-                System.out.println(e);
-            }
-
-    }
     public List<BlogCategory> getBlogCatogories() {
+        Connection con = DBUtil.getConnection();
         List<BlogCategory> blogCategories = new ArrayList<>();
         try {
             Statement stmt = con.createStatement();

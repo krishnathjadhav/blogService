@@ -10,19 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LoginDAO{
-	static Connection con;
-    static {
-        try{
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-            con= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/XEPDB1","SYSTEM","test");
-        }catch(Exception e){
-            System.out.println(e);
-        }
 
-    }
     public  List<Login> getLogin() {
         List<Login> loginInfo = new ArrayList<>();
-        
+        Connection con = DBUtil.getConnection();
         try {
             Statement stmt = con.createStatement();
 

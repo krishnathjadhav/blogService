@@ -10,17 +10,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class RegisterDAO{
-	static Connection con;
-    static {
-        try{
-            Class.forName("oracle.jdbc.driver.OracleDriver");
 
-            con= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/XEPDB1","SYSTEM","test");
-        }catch(Exception e){
-            System.out.println(e);
-        }
-
-    }
     
     
     public int generateUniqueId() {
@@ -28,6 +18,7 @@ public class RegisterDAO{
     }
     
     public boolean postRegister(Register res) {
+        Connection con = DBUtil.getConnection();
         System.out.println("con: "+con);
     	boolean success=false;
     	String name=res.getName();

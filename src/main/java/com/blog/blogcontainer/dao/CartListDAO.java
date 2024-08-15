@@ -9,21 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CartListDAO{
-	static Connection con;
-    static {
-    	
-        try{
-            Class.forName("oracle.jdbc.driver.OracleDriver");
 
-            con= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/XEPDB1","SYSTEM","root123");
-        }catch(Exception e){
-            System.out.println(e);
-        }
-
-    }
     
     public List<CartList> getCarts(int userId) {
         List<CartList> carts = new ArrayList<>();
+        Connection con = DBUtil.getConnection();
         try {
             String query = "SELECT * FROM Cart WHERE user_id=?";
             PreparedStatement pstmt = con.prepareStatement(query);

@@ -67,8 +67,14 @@
 		<dependency>
 			<groupId>com.oracle.database.jdbc</groupId>
 			<artifactId>ojdbc11</artifactId>
-			<scope>runtime</scope>
+			<version>23.3.0.23.09</version>
 		</dependency>
+		<dependency>
+			<groupId>com.oracle.database.jdbc</groupId>
+			<artifactId>ucp11</artifactId>
+			<version>23.3.0.23.09</version>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<plugins>

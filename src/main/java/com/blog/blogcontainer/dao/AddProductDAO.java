@@ -10,17 +10,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class AddProductDAO{
-	  static Connection con;
-	    static {
-	        try{
-	            Class.forName("oracle.jdbc.driver.OracleDriver");
 
-	            con= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/XEPDB1","SYSTEM","test");
-	        }catch(Exception e){
-	            System.out.println(e);
-	        }
-
-	    }
 	    
 	    private static int idCounter = 1;
 	    public int generateUniqueId() {
@@ -29,6 +19,7 @@ public class AddProductDAO{
 	    
 	    
 	    public boolean addproductdata(AddProduct addpro) {
+			Connection con = DBUtil.getConnection();
 	    	boolean success=false;
 	    	int category_id = addpro.getCategory_id();
 	    	String name=addpro.getName();
