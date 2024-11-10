@@ -18,7 +18,7 @@ public class DBUtil {
 
     final static String DEFAULT_URL = "jdbc:oracle:thin:@localhost:1521/XEPDB1";
     final static String DEFAULT_USER = "SYSTEM";
-    final static String DEFAULT_PASSWORD = "test";
+    final static String DEFAULT_PASSWORD = "test123";
     final static String CONN_FACTORY_CLASS = "oracle.jdbc.pool.OracleDataSource";
 
     // You must provide non-default values for ALL 3 to execute the program
